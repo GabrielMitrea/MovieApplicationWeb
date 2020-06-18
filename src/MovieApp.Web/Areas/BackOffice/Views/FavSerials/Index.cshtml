@@ -1,0 +1,98 @@
+﻿@model IEnumerable<MovieApp.Web.Areas.BackOffice.Models.FavSerial>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Favourite serials</h1>
+
+<p>
+    <a asp-action="Create">Add a new serial that you liked</a>
+</p>
+<form asp-controller="FavSerials" asp-action="Index">
+    <p>
+        Title: <input type="text" name="SearchString">
+        <input type="submit" value="Filter" />
+    </p>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ImagePath)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DivertismentType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Genre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumberOfSeasons)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumberOfEpisodes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateReleased)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Director)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Trailer)
+            </th>
+            
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <img class="img-responsive" src="@Url.Content("~/images/items/" + @item.ImagePath)" alt="">
+                </td>
+                <td style="text-align:center;vertical-align:middle; font-family:Trebuchet MS, Helvetica, sans-serif;">
+                    @Html.DisplayFor(modelItem => item.DivertismentType.DivertismentType)
+                </td>
+                <td style="text-align:center;vertical-align:middle; font-family:Trebuchet MS, Helvetica, sans-serif;">
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td style="text-align:center;vertical-align:middle; font-family:Trebuchet MS, Helvetica, sans-serif;">
+                    @Html.DisplayFor(modelItem => item.Genre.Genre)
+                </td>
+                <td style="text-align:center;vertical-align:middle; font-family:Trebuchet MS, Helvetica, sans-serif;">
+                    @Html.DisplayFor(modelItem => item.NumberOfSeasons)
+                </td>
+                <td style="text-align:center;vertical-align:middle; font-family:Trebuchet MS, Helvetica, sans-serif;">
+                    @Html.DisplayFor(modelItem => item.NumberOfEpisodes)
+                </td>
+                <td style="text-align:center;vertical-align:middle; font-family:Trebuchet MS, Helvetica, sans-serif;">
+                    @Html.DisplayFor(modelItem => item.DateReleased)
+                </td>
+                <td style="text-align:center;vertical-align:middle; font-family:Trebuchet MS, Helvetica, sans-serif;">
+                    @Html.DisplayFor(modelItem => item.Director)
+                </td>
+                <td style="text-align:center;vertical-align:middle; font-family:Trebuchet MS, Helvetica, sans-serif;">
+
+                    <a href="@Html.DisplayFor(modelItem => item.Trailer)">Trailer</a>
+                </td>
+
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<footer class="border-top footer text-muted">
+    <div class="container" style="color:black;float:left;">
+        &copy;2020 - Movie Application<a asp-area="" asp-controller="Home"></a>
+    </div>
+</footer>

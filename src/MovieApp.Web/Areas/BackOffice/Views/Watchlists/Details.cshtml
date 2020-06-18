@@ -1,0 +1,42 @@
+﻿@model MovieApp.Web.Areas.BackOffice.Models.Watchlist
+
+@{
+    ViewData["Title"] = "Details";
+}
+<body style="background-color:#5f6366; font-family:Trebuchet MS, Helvetica, sans-serif; color:white;">
+    <h3>@Model.Title</h3>
+    <div id="type">
+        <h1>@Model.DivertismentType.DivertismentType</h1>
+    </div>
+    <div id="trailer" style="float:right;">
+        <iframe width="700" height="400" src="@Model.Trailer" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <div id="image">
+        <img class="img-responsive" src="@Url.Content("~/images/items/" + Model.ImagePath)" alt="" style="height:300px; width:250px;">
+    </div>
+    <br />
+
+    <div id="description">
+        <h1>Description</h1>
+        <p style="width:250px;">@Model.Description</p>
+    </div>
+    <div id="details">
+        <ul style="color:white;">
+            <li><span>Genre - </span> @Model.Genre.Genre</li>
+            <li><span>Date Release - </span> @Model.DateReleased.Date</li>
+            <li><span>Duration - </span> @Model.Duration.TimeOfDay</li>
+            <li><span>Director - </span> @Model.Director</li>
+
+        </ul>
+    </div>
+
+
+    <div>
+        <a asp-action="Index" style="color:white;">Back to List</a>
+    </div>
+    <footer class="border-top footer text-muted">
+        <div class="container" style="color:white; float:left;">
+            &copy;2020 - Movie Application<a asp-area="" asp-controller="Home"></a>
+        </div>
+    </footer>
+</body>
